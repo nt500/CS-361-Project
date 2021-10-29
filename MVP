@@ -307,7 +307,7 @@ def geographyTriviaGame():
 choice = ""
 print("TRIVIA GAME\n")
 while(choice != "F" or choice != "f"):
-  print("Which subject would you like to answer questions about?")
+  print("Which subject would you like to test your knowledge on?")
   print("A: Health")
   print("B: History")
   print("C: Biology")
