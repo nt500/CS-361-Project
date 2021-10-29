@@ -305,6 +305,7 @@ def geographyTriviaGame():
     print("You answered", correct, "out of", totalQ, "questions correctly.  You scored", math.trunc(percentageCorrect), "%.\n")       
   
 choice = ""
+print("TRIVIA GAME\n")
 while(choice != "F" or choice != "f"):
   print("Which subject would you like to answer questions about?")
   print("A: Health")
