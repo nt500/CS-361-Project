@@ -1,0 +1,331 @@
+import random
+import math 
+
+def healthTriviaGame():
+  questions = { 
+       "Which vitamin helps with calcium absorption?" : "Vitamin D", 
+       "Adults need at least how many hours of sleep per night? (enter a number)" : "7",
+       "What is the active ingredient in turmeric, which can help with decreasing inflammation?" : "Curcumin",
+       "Also known as Indian ginseng, which herbal supplement can help with decreasing stress and anxiety?" : "Ashwagandha",
+       "Which of the three COVID-19 vaccines was found to be more effective at preventing hospitalizations?" : "Moderna",
+       "Which hormone controls the sleep-wake cycle, and is a supplement commonly taken by people who have trouble sleeping?" : "Melatonin",
+       "At a minimum, how many minutes of physical activity per week is recommended for adults? (enter a number)" : "150",
+       "Commonly found in dairy products, and taken as a supplement, what is the name of the good bacteria in our gut that help with digestion?" : "Probiotics",
+       "Which disease is currently the leading cause of death in the United States?" : "Heart Disease",
+       "Which mineral supports muscle function, heart health, and relaxation?" : "Magnesium",
+       "Which type of protein helps with maintaining skin, hair, nail, and joint health?" : "Collagen",
+       "Commonly found in meat, seafood, and dairy products, and taken as a supplement, which mineral supports immune health and wound healing?" : "Zinc",
+       "Citrus fruits contain high levels of a vitamin that supports the immune system and protects cells.  What is the name of this vitamin?" : "Vitamin C",
+       "If your iron levels are too low, red blood cells may not be able to transport which element?" : "Oxygen",
+       "Which type of fish oil reduces inflammation?" : "EPA",
+       "Which type of fish oil improves brain health?" : "DHA",
+       "Besides folate, which other type of B vitamin helps with the production of red blood cells and DNA?" : "Vitamin B12",
+       "Which endocrine-disrupting chemical is commonly found in bottles and cans? (enter in the acronym)" : "BPA",
+       "Which endocrine-disrupting chemicals are commonly used as a preservative in body care and beauty products?" : "Parabens",
+       "Seniors, long-term care facility residents, people with underlying medical conditions, and people in high-risk occupations are eligible for a COVID-19 booster shot how many months after their second dose? (enter a number)" : "6",
+       "Between vitamins A-E, which one can help with improving night vision?" : "Vitamin A",
+       "Which amino acid supplement can help with reducing stress and anxiety?" : "L-Theanine"
+  }
+  totalQ = int(10)
+  rset = random.sample(list(questions), totalQ)
+  print()
+  count = int(1)
+  correct = int(0)
+  print("Enter X to go back to quit game and go back to the main menu at any time.\n")
+  for q in rset:
+      print("Question #", count, ": \n % s" % q)
+      print()
+      userinput = input("Your answer: ")
+      print()
+      if userinput.lower() in questions[q].lower():
+        print("Correct!\n")
+        correct += 1
+        count +=1
+      if userinput.lower() not in questions[q].lower():
+          if userinput.lower() != "x":
+              print("Incorrect!  The correct answer is: ", questions[q])
+              print()  
+              count +=1
+          else:
+            return
+  percentageCorrect = (correct / totalQ) * 100 
+  print("You answered", correct, "out of", totalQ, "questions correctly.  You scored", math.trunc(percentageCorrect), "%.\n")
+
+def historyTriviaGame():
+  questions = { 
+  "What year was the U.S. Declaration of Independence signed?" : "1776",
+  "Which Amendment of the U.S. Constitution prohibited slavery?" : "Thirteenth Amendment",
+  "To help people recover from the Great Depression, which U.S. President implemented the New Deal?" : "Franklin Roosevelt",
+  "Which Amendment of the U.S. Constitution gave women the right to vote?" : "Nineteenth Amendment",
+  "Who was the Native American guide that joined Lewis and Clark on their expedition?" : "Sacagawea",
+  "Which U.S. President was involved with the Louisiana Purchase?" : "Thomas Jefferson",
+  "The United States expanded all the way to the West Coast after the end of which war?" : "Mexican-American War",
+  "Which toxic chemical defoliant was used during the Vietnam War?" : "Agent Orange",
+  "The U.S. joined World War II after Japan bombed which U.S. naval base?" : "Pearl Harbor",
+  "By getting involved in the Vietnam War, what was the U.S. trying to stop?" : "Communism",
+  "The Bay of Pigs Invasion during the Cold War was a failed attempt by the U.S. to remove which world leader?" : "Fidel Castro",
+  "The American Civil War began at which location?" : "Fort Sumter",
+  "In 1773, colonists in the United States were involved with which protest on British taxes?" : "Boston Tea Party",
+  "Which side was the United States on during World War I?" : "Allies",
+  "Which communications system was invented during the Industrial Revolution?" : "Telegraph",
+  "During the Industrial Revolution, the invention of a more efficient ______________ helped with powering factories." : "Steam Engine",
+  "The Great Depression began in 1929 when what happened?" : "Stock Market Crash",
+  "The American Revolutionary War ended when the British surrendered at the Battle of __________." : "Yorktown",
+  "During World War II, the U.S. dropped an atomic bomb in which city?" : "Hiroshima",
+  "Which treaty ended World War I?" : "Treaty of Versailles",
+  "World War I contributed to the spread of which pandemic?" : "Spanish Flu",
+  "Which type of music became popular in the United States during the 1920s?" : "Jazz",
+  "During which year did segregation end in the United States?" : "1964",
+  "In which court case did the U.S. Supreme Court rule that segregation in public schools was unconstitutional?" : "Brown v. Board of Education",
+  "The Emancipation Proclamation, which freed slaves in 10 states, was announced by which U.S. President?" : "Abraham Lincoln"       
+  }
+  totalQ = int(10)
+  rset = random.sample(list(questions), totalQ)
+  print()
+  count = int(1)
+  correct = int(0)
+  print("Enter X to go back to quit game and go back to the main menu at any time.\n")
+  for q in rset:
+      print("Question #", count, ": \n % s" % q)
+      print()
+      userinput = input("Your answer: ")
+      print()
+      if userinput.lower() in questions[q].lower():
+        print("Correct!\n")
+        correct += 1
+        count +=1
+      if userinput.lower() not in questions[q].lower():
+          if userinput.lower() != "x":
+              print("Incorrect!  The correct answer is: ", questions[q])
+              print() 
+              count +=1 
+          else:
+            return
+  percentageCorrect = (correct / totalQ) * 100 
+  print("You answered", correct, "out of", totalQ, "questions correctly.  You scored", math.trunc(percentageCorrect), "%.\n")
+
+def biologyTriviaGame():
+    questions = { 
+    "The four nucleotide bases in DNA are adenine, guanine, cytosine, and __________." : "Thymine",
+    "Which part of the cell is known as the powerhouse?" : "Mitochondria",
+    "Three structures found in plant cells that are not in animal cells are the cell wall, vacuole, and ___________." : "Chloroplasts",   
+    "In DNA, cytosine pairs with which base?" : "Guanine",
+    "How many total chromosomes do humans have? (enter a number)" : "46",
+    "What are genes made of?" : "DNA",
+    "In which part of the cell does transcription occur?" : "Nucleus",
+    "In which part of the cell does translation occur?" : "Cytoplasm",
+    "Evolution occurs by which process?" : "Natural Selection",
+    "Males have which pair of sex chromosomes?" : "XY",
+    "Females have which pair of sex chromosomes?" : "XX",
+    "A change in a DNA sequence that increases genetic variation in a population is known as a __________." : "Mutation",
+    "People who have two copies of the same allele are ___________." : "Homozygous",
+    "People who have two different alleles for a certain gene are ____________." : "Heterozygous",
+    "If each of two parents has one dominant and one recessive allele for a particular gene, what is the probability that their offspring will have the recessive phenotype? (enter a number with a % sign)" : "25%",
+    "The role of a creature in an ecosystem is known as a _________." : "Niche",
+    "Which type of cells are present in bacteria?." : "Prokaryotic",
+    "Which type of cells are present in animals?." : "Eukaryotic",
+    "The control center of the cell is the _________" : "Nucleus",
+    "Which structure in the cell is involved with synthesizing proteins?" : "Ribosomes",
+    "If one parent is homozygous dominant, and the other parent is homozygous recessive, what is the probability that their offspring will have the recessive phenotype? (enter a number with a % sign)" : "0%",
+    "If one parent is heterozygous, and the other parent is homozygous recessive, what is the probability that their offspring will have the recessive phenotype? (enter a number with a % sign)" : "50%",
+    "A group of organisms of the same species is known as a ___________." : "Population",
+    "A ___________ consists of multiple species living in the same area." : "Community",
+    "A change in the frequency of a certain gene in a population over time is known as _____________." : "Genetic Drift"
+  }
+    totalQ = int(10)
+    rset = random.sample(list(questions), totalQ)
+    print()
+    count = int(1)
+    correct = int(0)
+    print("Enter X to go back to quit game and go back to the main menu at any time.\n")
+    for q in rset:
+        print("Question #", count, ": \n % s" % q)
+        print()
+        userinput = input("Your answer: ")
+        print()
+        if userinput.lower() in questions[q].lower():
+          print("Correct!\n")
+          correct += 1
+          count +=1
+        if userinput.lower() not in questions[q].lower():
+            if userinput.lower() != "x":
+                print("Incorrect!  The correct answer is: ", questions[q])
+                print() 
+                count +=1 
+            else:
+              return
+    percentageCorrect = (correct / totalQ) * 100 
+    print("You answered", correct, "out of", totalQ, "questions correctly.  You scored", math.trunc(percentageCorrect), "%.\n")
+  
+def spanishTriviaGame():
+    print("Enter the English translation for each of the following Spanish words/phrases:")
+    questions = { 
+        "El Dia de Accion de Gracias" : "Thanksgiving",
+        "La Navidad" : "Christmas",
+        "Como estas" : "How Are You",
+        "Hola" : "Hello",
+        "Adios" : "Goodbye",
+        "por favor" : "Please",
+        "gracias" : "Thank You",
+        "cama" : "Bed",
+        "mesa" : "Table",
+        "silla" : "Chair",
+        "amor" : "Love",
+        "amistad" : "Friendship",
+        "perro" : "Dog",
+        "gato" : "Cat",
+        "domingo" : "Sunday",
+        "lunes": "Monday",
+        "martes" : "Tuesday",
+        "miercoles" : "Wednesday",
+        "jueves" : "Thursday",
+        "viernes" : "Friday",
+        "sabado" : "Saturday",
+        "bueno" : "Good",
+        "mal" : "Bad",
+        "rojo" : "Red",
+        "verde" : "Green",
+        "azul" : "Blue",
+        "banco" : "Bank",
+        "biblioteca": "Library",
+        "supermercado": "Supermarket",
+        "farmacia" : "Pharmacy",
+        "escuela" : "School",
+        "coche" : "Car",
+        "tienda" : "Store",
+        "boca": "Mouth",
+        "pierna" : "Leg",
+        "pie" : "Foot",
+        "mano" : "Hand",
+        "cara" : "Face",
+        "hombre": "Man",
+        "mujer" : "Woman",
+        "servilleta" : "Napkin",
+        "cuchillo" : "Knife",
+        "tenedor" : "Fork",
+        "cuchara" : "Spoon",
+        "padre" : "Father",
+        "madre" : "Mother",
+        "abuelo" : "Grandfather",
+        "abuela" : "Grandmother",
+        "esposo" : "Husband",
+        "esposa" : "Wife",
+        "novio" : "Boyfriend",
+        "novia" : "Girlfriend",
+        "tio" : "Uncle",
+        "tia" : "Aunt",
+        "frio" : "Cold",
+        "caliente" : "Hot",
+        "lluvia" : "Rain",
+        "computadora" : "Computer",
+        "televisor" : "Television",
+        "telefono" : "Phone",
+        "almohada" : "Pillow",
+        "manta" : "Blanket",
+        "boligrafo" : "Pen",
+        "lapiz" : "Pencil",
+        "ropa" : "Clothing"
+    }  
+    totalQ = int(10)
+    rset = random.sample(list(questions), totalQ)
+    print()
+    count = int(1)
+    correct = int(0)
+    print("Enter X to go back to quit game and go back to the main menu at any time.\n")
+    for q in rset:
+        print("Question #", count, ": \n % s" % q)
+        print()
+        userinput = input("Your answer: ")
+        print()
+        if userinput.lower() in questions[q].lower():
+          print("Correct!\n")
+          correct += 1
+          count +=1
+        if userinput.lower() not in questions[q].lower():
+            if userinput.lower() != "x":
+                print("Incorrect!  The correct answer is: ", questions[q])
+                print() 
+                count +=1 
+            else:
+              return
+    percentageCorrect = (correct / totalQ) * 100 
+    print("You answered", correct, "out of", totalQ, "questions correctly.  You scored", math.trunc(percentageCorrect), "%.\n")
+
+def geographyTriviaGame():
+    questions = { 
+  "What is the largest state in the United States?" : "Alaska",
+  "What is the most populous state in the United States?" : "California",      
+  "What is the second most populous country in the world?" : "India",
+  "What is the longest river in the world?" : "Nile River",
+  "What is the longest river in the United States?" : "Missouri River",
+  "What is the largest ocean in the world?" : "Pacific Ocean",
+  "What is the capital of Germany?" : "Berlin",
+  "What is the second most populous city in the United States?" : "Los Angeles",
+  "What is the capital of Poland?" : "Warsaw",
+  "What is the capital of India?" : "New Delhi",
+  "What is the capital of New Mexico?" : "Santa Fe",
+  "What is the capital of California?" : "Sacramento",
+  "What is the hottest place in the United States?" : "Death Valley",
+  "In which U.S. state are Zion and Bryce Canyon National Parks located?" : "Utah",
+  "What is the largest lake in the United States?" : "Lake Superior",
+  "Which Time Zone is Arizona located in?" : "Mountain Time Zone",
+  "The Taj Mahal is located in which city?" : "Agra",
+  "What is the tallest mountain in the United States?" : "Mount Denali",
+  "Which river runs through the Grand Canyon?" : "Colorado River",
+  "The Tropic of Cancer and the Tropic of Capricorn are located approximately how many degrees north/south of the equator? (enter a number)" : "23",
+  "Which South American country borders North America?" : "Colombia",
+  "Which sea is located to the west of South Korea?" : "Yellow Sea",
+  "The equator passes through North America.  True or false?" : "False",
+  "What is the longest mountain range in the United States?" : "Rocky Mountains",
+  "What is the longest mountain range in the world?" : "The Andes"
+  }
+    totalQ = int(10)
+    rset = random.sample(list(questions), totalQ)
+    print()
+    count = int(1)
+    correct = int(0)
+    print("Enter X to go back to quit game and go back to the main menu at any time.\n")
+    for q in rset:
+        print("Question #", count, ": \n % s" % q)
+        print()
+        userinput = input("Your answer: ")
+        print()
+        if userinput.lower() in questions[q].lower():
+          print("Correct!\n")
+          correct += 1
+          count +=1
+        if userinput.lower() not in questions[q].lower():
+            if userinput.lower() != "x":
+                print("Incorrect!  The correct answer is: ", questions[q])
+                print() 
+                count +=1 
+            else:
+              return
+    percentageCorrect = (correct / totalQ) * 100 
+    print("You answered", correct, "out of", totalQ, "questions correctly.  You scored", math.trunc(percentageCorrect), "%.\n")       
+  
+choice = ""
+print("TRIVIA GAME\n")
+while(choice != "F" or choice != "f"):
+  print("Which subject would you like to test your knowledge on?")
+  print("A: Health")
+  print("B: History")
+  print("C: Biology")
+  print("D: Spanish")
+  print("E: Geography")
+  print("F: Exit Program")
+  choice = input()
+  if(choice == "A" or choice == "a"):
+    healthTriviaGame()
+  elif(choice == "B" or choice == "b"):
+    historyTriviaGame()
+  elif(choice == "C" or choice == "c"):
+    biologyTriviaGame()
+  elif(choice == "D" or choice == "d"):
+    spanishTriviaGame()
+  elif(choice == "E" or choice == "e"):
+    geographyTriviaGame()
+  elif(choice == "F" or choice == "f"):
+    break
+  else:
+    print("You selected an incorrect choice.  Try again.\n")
