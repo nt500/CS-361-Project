@@ -1,3 +1,3 @@
 # CS-361-Project
 
-I am creating a trivia game that will include questions about history, geography, biology, health, and Spanish.
+This is a trivia game which includes questions about history, geography, biology, health, and Spanish.  You can also create and play a custom trivia game.
