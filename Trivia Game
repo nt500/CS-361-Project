@@ -11,148 +11,82 @@ def loadQuestions(filename):
 
   return questions  
 
-def healthTriviaGame():
-  questions = loadQuestions("healthTrivia.txt")
+def playTrivia(questions):
   totalQ = int(10)
   rset = random.sample(list(questions), totalQ)
   print()
+  print("Enter X to go back to quit game and go back to the main menu at any time.\n")
+  triviaGameForLoop(questions, rset, totalQ)
+  
+def triviaGameForLoop(questions, rset, totalQ):
   count = int(1)
   correct = int(0)
-  print("Enter X to go back to quit game and go back to the main menu at any time.\n")
   for q in rset:
-      print("Question #", count, ": \n % s" % q)
-      print()
-      userinput = input("Your answer: ")
-      print()
-      if userinput.lower() in questions[q].lower():
-        print("Correct!\n")
-        correct += 1
-        count +=1
-      if userinput.lower() not in questions[q].lower():
-          if userinput.lower() != "x":
-              print("Incorrect!  The correct answer is: ", questions[q])
-              print()  
-              count +=1
-          else:
-            return
+    printQuestion(count, q)
+    userinput = input("Your answer: ")
+    print()
+    if userinput.lower() in questions[q].lower():
+      correct = correctResponse(correct)
+      count +=1
+    if userinput.lower() not in questions[q].lower():
+        if userinput.lower() != "x":
+            count = incorrectResponse(questions, q, count)
+        else:
+          return
+  calculateAndDisplayScore(correct, totalQ)        
+
+def printQuestion(count, q):
+  print("Question #", count, ": \n % s" % q)
+  print()
+
+def correctResponse(correct):
+  print("Correct!\n")
+  correct += 1
+  return correct
+
+def incorrectResponse(questions, q, count):
+  print("Incorrect!  The correct answer is: ", questions[q])
+  print()
+  count +=1
+  return count  
+
+def calculateAndDisplayScore(correct, totalQ):
   percentageCorrect = (correct / totalQ) * 100 
   print("You answered", correct, "out of", totalQ, "questions correctly.  You scored", math.trunc(percentageCorrect), "%.\n")
+
+def healthTriviaGame():
+  questions = loadQuestions("healthTrivia.txt")
+  playTrivia(questions)
 
 def historyTriviaGame():
   questions = loadQuestions("historyTrivia.txt")
-  totalQ = int(10)
-  rset = random.sample(list(questions), totalQ)
-  print()
-  count = int(1)
-  correct = int(0)
-  print("Enter X to go back to quit game and go back to the main menu at any time.\n")
-  for q in rset:
-      print("Question #", count, ": \n % s" % q)
-      print()
-      userinput = input("Your answer: ")
-      print()
-      if userinput.lower() in questions[q].lower():
-        print("Correct!\n")
-        correct += 1
-        count +=1
-      if userinput.lower() not in questions[q].lower():
-          if userinput.lower() != "x":
-              print("Incorrect!  The correct answer is: ", questions[q])
-              print() 
-              count +=1 
-          else:
-            return
-  percentageCorrect = (correct / totalQ) * 100 
-  print("You answered", correct, "out of", totalQ, "questions correctly.  You scored", math.trunc(percentageCorrect), "%.\n")
+  playTrivia(questions)
 
 def biologyTriviaGame():
-    questions = loadQuestions("biologyTrivia.txt")
-    totalQ = int(10)
-    rset = random.sample(list(questions), totalQ)
-    print()
-    count = int(1)
-    correct = int(0)
-    print("Enter X to go back to quit game and go back to the main menu at any time.\n")
-    for q in rset:
-        print("Question #", count, ": \n % s" % q)
-        print()
-        userinput = input("Your answer: ")
-        print()
-        if userinput.lower() in questions[q].lower():
-          print("Correct!\n")
-          correct += 1
-          count +=1
-        if userinput.lower() not in questions[q].lower():
-            if userinput.lower() != "x":
-                print("Incorrect!  The correct answer is: ", questions[q])
-                print() 
-                count +=1 
-            else:
-              return
-    percentageCorrect = (correct / totalQ) * 100 
-    print("You answered", correct, "out of", totalQ, "questions correctly.  You scored", math.trunc(percentageCorrect), "%.\n")
+  questions = loadQuestions("biologyTrivia.txt")
+  playTrivia(questions)
   
 def spanishTriviaGame():
-    print("Enter the English translation for each of the following Spanish words/phrases:")
-    questions = loadQuestions("spanishTrivia.txt")
-    totalQ = int(10)
-    rset = random.sample(list(questions), totalQ)
-    print()
-    count = int(1)
-    correct = int(0)
-    print("Enter X to go back to quit game and go back to the main menu at any time.\n")
-    for q in rset:
-        print("Question #", count, ": \n % s" % q)
-        print()
-        userinput = input("Your answer: ")
-        print()
-        if userinput.lower() in questions[q].lower():
-          print("Correct!\n")
-          correct += 1
-          count +=1
-        if userinput.lower() not in questions[q].lower():
-            if userinput.lower() != "x":
-                print("Incorrect!  The correct answer is: ", questions[q])
-                print() 
-                count +=1 
-            else:
-              return
-    percentageCorrect = (correct / totalQ) * 100 
-    print("You answered", correct, "out of", totalQ, "questions correctly.  You scored", math.trunc(percentageCorrect), "%.\n")
+  print()
+  print("Enter the English translation for each of the following Spanish words/phrases:")
+  questions = loadQuestions("spanishTrivia.txt")
+  playTrivia(questions)
 
 def geographyTriviaGame():
-    questions = loadQuestions("geographyTrivia.txt")
-    totalQ = int(10)
-    rset = random.sample(list(questions), totalQ)
-    print()
-    count = int(1)
-    correct = int(0)
-    print("Enter X to go back to quit game and go back to the main menu at any time.\n")
-    for q in rset:
-        print("Question #", count, ": \n % s" % q)
-        print()
-        userinput = input("Your answer: ")
-        print()
-        if userinput.lower() in questions[q].lower():
-          print("Correct!\n")
-          correct += 1
-          count +=1
-        if userinput.lower() not in questions[q].lower():
-            if userinput.lower() != "x":
-                print("Incorrect!  The correct answer is: ", questions[q])
-                print() 
-                count +=1 
-            else:
-              return
-    percentageCorrect = (correct / totalQ) * 100 
-    print("You answered", correct, "out of", totalQ, "questions correctly.  You scored", math.trunc(percentageCorrect), "%.\n")       
+  questions = loadQuestions("geographyTrivia.txt")
+  playTrivia(questions)       
 
 def createCustomTriviaGame():
   questions = []
+  print("Enter X when you are done with creating your trivia game.")
+  questions = customTriviaForLoop(questions)
+  questionsDict = {questions[i]: questions[i + 1] for i in range(0, len(questions), 2)}
+  saveCustomTriviaQuestions(questionsDict)
+  
+def customTriviaForLoop(questions):
   question = ""
   answer = ""
   i = int(0)
-  print("Enter X when you are done with creating your trivia game.")
   for i in range(0, 100):
     question = input("Enter a trivia question: ")
     if(question == "x" or question == "X"):
@@ -161,14 +95,15 @@ def createCustomTriviaGame():
     answer = input("Enter the answer to this question: ")
     if(answer == "x" or answer == "X"):
       break
-    questions.append(answer) 
-  questionsDict = {questions[i]: questions[i + 1] for i in range(0, len(questions), 2)}
-  print(questionsDict)
+    questions.append(answer)
+  return questions  
+
+def saveCustomTriviaQuestions(questionsDict):
   print("To save this set of trivia questions and answers, enter a filename:")
   filename = input()
   with open(filename, 'w') as file:
-        json.dump(questionsDict, file)
-        print("File successfully saved\n")
+    json.dump(questionsDict, file)
+    print("File successfully saved\n")     
 
 def playCustomTriviaGame():
   print("Please type in the full filename of the file that contains the custom trivia game you would like to play:")
@@ -180,34 +115,9 @@ def playCustomTriviaGame():
     if(os.path.exists(filename)):
       break
   questions = loadQuestions(filename)
-  totalQ = int(10)
-  rset = random.sample(list(questions), totalQ)
-  print()
-  count = int(1)
-  correct = int(0)
-  print("Enter X to go back to quit game and go back to the main menu at any time.\n")
-  for q in rset:
-      print("Question #", count, ": \n % s" % q)
-      print()
-      userinput = input("Your answer: ")
-      print()
-      if userinput.lower() in questions[q].lower():
-        print("Correct!\n")
-        correct += 1
-        count +=1
-      if userinput.lower() not in questions[q].lower():
-          if userinput.lower() != "x":
-              print("Incorrect!  The correct answer is: ", questions[q])
-              print() 
-              count +=1 
-          else:
-            return
-  percentageCorrect = (correct / totalQ) * 100 
-  print("You answered", correct, "out of", totalQ, "questions correctly.  You scored", math.trunc(percentageCorrect), "%.\n")
+  playTrivia(questions)
 
-choice = ""
-print("TRIVIA GAME\n")
-while(choice != "H" or choice != "h"):
+def printMenuOptions():
   print("Please type in a letter to select one of the following menu options:")
   print("A: Health Trivia Game")
   print("B: History Trivia Game")
@@ -217,6 +127,11 @@ while(choice != "H" or choice != "h"):
   print("F: Create Custom Trivia Game")
   print("G: Play Custom Trivia Game")
   print("H: Exit Program")
+
+choice = ""
+print("TRIVIA GAME\n")
+while(choice != "H" or choice != "h"):
+  printMenuOptions()
   choice = input()
   if(choice == "A" or choice == "a"):
     healthTriviaGame()
