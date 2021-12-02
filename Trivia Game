@@ -9,7 +9,7 @@ def loadQuestions(filename):
       
   questions = json.loads(data)
 
-  return questions  
+  return questions
 
 def playTrivia(questions):
   totalQ = int(10)
@@ -108,14 +108,43 @@ def saveCustomTriviaQuestions(questionsDict):
 def playCustomTriviaGame():
   print("Please type in the full filename of the file that contains the custom trivia game you would like to play:")
   filename = input()
-  exists = os.path.exists(filename)
+  filename = validateFilename(filename)
+  questions = loadQuestions(filename)
+  playTrivia(questions)
+
+def appendCustomTriviaQuestion():
+  print("Enter the filename of the trivia question list that you would like to append an entry to: ")
+  filename = input()
+  filename = validateFilename(filename)  
+  questions = loadQuestions(filename)
+  print("Enter the question that you would like to add to your set of trivia questions: ")
+  question = input()
+  print("Enter the answer to this question: ")
+  answer = input()
+  questions.update([[question, answer]])
+  saveCustomTriviaQuestions(questions)  
+
+def deleteCustomTriviaQuestion():
+  print("Enter the filename of the trivia question list that you would like to delete an entry from: ")
+  filename = input()
+  filename = validateFilename(filename)  
+  questions = loadQuestions(filename)
+  print("Enter the question that you would like to delete: ")
+  question = input()
+  while question not in questions:
+    print("Error: Question not found!  Please re-enter the question that you would like to delete: ")
+    question = input()
+  del questions[question]
+  saveCustomTriviaQuestions(questions)
+
+def validateFilename(filename):
+  exists = os.path.exists(filename)  
   while(not exists):
     print("Error: File not found!  Please enter the correct filename:")
     filename = input()
     if(os.path.exists(filename)):
-      break
-  questions = loadQuestions(filename)
-  playTrivia(questions)
+      return filename
+  return filename       
 
 def printMenuOptions():
   print("Please type in a letter to select one of the following menu options:")
@@ -125,12 +154,14 @@ def printMenuOptions():
   print("D: Spanish Trivia Game")
   print("E: Geography Trivia Game")
   print("F: Create Custom Trivia Game")
-  print("G: Play Custom Trivia Game")
-  print("H: Exit Program")
+  print("G: Append Custom Trivia Question to a File")
+  print("H: Delete Custom Trivia Question to a File")
+  print("I: Play Custom Trivia Game")
+  print("J: Exit Program")
 
 choice = ""
 print("TRIVIA GAME\n")
-while(choice != "H" or choice != "h"):
+while(choice != "j" or choice != "J"):
   printMenuOptions()
   choice = input()
   if(choice == "A" or choice == "a"):
@@ -146,8 +177,12 @@ while(choice != "H" or choice != "h"):
   elif(choice == "F" or choice == "f"):
     createCustomTriviaGame()
   elif(choice == "G" or choice == "g"):
-    playCustomTriviaGame()
+    appendCustomTriviaQuestion()  
   elif(choice == "H" or choice == "h"):
+    deleteCustomTriviaQuestion()  
+  elif(choice == "I" or choice == "i"):
+    playCustomTriviaGame()
+  elif(choice == "J" or choice == "j"):
     break
   else:
     print("You selected an incorrect choice.  Try again.\n")
