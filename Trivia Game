@@ -99,8 +99,11 @@ def customTriviaForLoop(questions):
   return questions  
 
 def saveCustomTriviaQuestions(questionsDict):
+  print("\nIf you would like to go back to the main menu without saving, enter X.\n")
   print("To save this set of trivia questions and answers, enter a filename:")
   filename = input()
+  if(filename == "x" or filename == "X"):
+    return
   with open(filename, 'w') as file:
     json.dump(questionsDict, file)
     print("File successfully saved\n")     
@@ -113,24 +116,36 @@ def playCustomTriviaGame():
   playTrivia(questions)
 
 def appendCustomTriviaQuestion():
+  print("Enter X to return to the main menu at any time.\n")
   print("Enter the filename of the trivia question list that you would like to append an entry to: ")
   filename = input()
+  if(filename == "x" or filename == "X"):
+    return
   filename = validateFilename(filename)  
   questions = loadQuestions(filename)
   print("Enter the question that you would like to add to your set of trivia questions: ")
   question = input()
+  if(question == "x" or question == "X"):
+    return
   print("Enter the answer to this question: ")
   answer = input()
+  if(answer == "x" or answer == "X"):
+    return
   questions.update([[question, answer]])
   saveCustomTriviaQuestions(questions)  
 
 def deleteCustomTriviaQuestion():
+  print("Enter X to return to the main menu at any time.\n")
   print("Enter the filename of the trivia question list that you would like to delete an entry from: ")
   filename = input()
-  filename = validateFilename(filename)  
+  if(filename == "x" or filename == "X"):
+    return
+  filename = validateFilename(filename)
   questions = loadQuestions(filename)
   print("Enter the question that you would like to delete: ")
   question = input()
+  if(question == "x" or question == "X"):
+    return
   while question not in questions:
     print("Error: Question not found!  Please re-enter the question that you would like to delete: ")
     question = input()
